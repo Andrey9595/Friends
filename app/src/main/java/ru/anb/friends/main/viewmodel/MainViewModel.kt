@@ -1,4 +1,4 @@
-package ru.anb.friends.main
+package ru.anb.friends.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
