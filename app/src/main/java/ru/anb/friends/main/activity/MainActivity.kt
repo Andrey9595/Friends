@@ -1,8 +1,9 @@
-package ru.anb.friends
+package ru.anb.friends.main.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.anb.friends.main.MainFragment
+import ru.anb.friends.R
+import ru.anb.friends.main.fragments.MainFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +12,8 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, MainFragment.newInstance()).commit()
+                .add(R.id.container, MainFragment.newInstance()).
+                commit()
         }
     }
 }
