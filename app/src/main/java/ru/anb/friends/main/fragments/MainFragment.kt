@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.anb.friends.R
 import ru.anb.friends.main.viewmodel.MainViewModel
 import ru.anb.friends.main.adapter.FriendsAdapter
+import ru.anb.friends.main.bottomsheet.BottomSheet
 import ru.anb.friends.main.dto.Group
 import kotlin.properties.Delegates
 
 class MainFragment : Fragment() {
-    private var numberOfColums by Delegates.notNull<Int>()
+    private var numberOfColumns by Delegates.notNull<Int>()
 
     companion object {
         fun newInstance() = MainFragment()
@@ -36,6 +37,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView: RecyclerView = view.findViewById((R.id.fragmentRecyclerView))
         recyclerView.layoutManager = LinearLayoutManager(context)
+        val openBottomSheetCallback: () -> Unit = { ->
+            val bottomSheet: BottomSheet = BottomSheet()
+            bottomSheet.show(parentFragmentManager, "String")
+        }
         recyclerView.adapter = FriendsAdapter(
             listOf<Group>(
                 Group(name = "Name", id = 0),
@@ -79,13 +84,15 @@ class MainFragment : Fragment() {
                 Group(name = "Name2", id = 1),
                 Group(name = "Name", id = 0),
                 Group(name = "Name2", id = 1),
-            )
+            ), openBottomSheetCallback
         )
+
+
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            numberOfColums = 3
+            numberOfColumns = 3
         } else {
-            numberOfColums = 4
+            numberOfColumns = 4
         }
-        recyclerView.layoutManager = GridLayoutManager(context, numberOfColums)
+        recyclerView.layoutManager = GridLayoutManager(context, numberOfColumns)
     }
 }

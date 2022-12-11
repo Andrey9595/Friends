@@ -9,20 +9,27 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.anb.friends.R
 import ru.anb.friends.main.dto.Group
 
-class FriendsAdapter(private  val names: List<Group>) : RecyclerView.Adapter<FriendsAdapter.FriendsViewHolder>() {
+class FriendsAdapter(private val names: List<Group>, private val clicked: () -> Unit) :
+    RecyclerView.Adapter<FriendsAdapter.FriendsViewHolder>() {
 
-    class FriendsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class FriendsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val text: TextView = itemView.findViewById(R.id.name)
         val avatar: ImageView = itemView.findViewById(R.id.avatar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.friends_item, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.friends_item, parent, false)
         return FriendsViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: FriendsViewHolder, position: Int) {
         holder.text.text = names[position].name
+        holder.avatar.setOnLongClickListener {
+            clicked()
+            return@setOnLongClickListener true
+        }
+
     }
 
     override fun getItemCount(): Int {
