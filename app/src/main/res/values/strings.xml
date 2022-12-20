@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Friends</string>
     <string name="open">Open</string>
+    <integer name="com_vk_sdk_AppId">51505711</integer>
 </resources>

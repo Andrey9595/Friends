@@ -1,6 +1,9 @@
 package ru.anb.friends.main.dto
 
-data class Group (
-    val id: Int,
-    val name: String
-        )
+import com.vk.dto.common.id.UserId
+
+data class Group(
+    val id: UserId?,
+    val name: String?,
+    val imageUri:String? = null
+)

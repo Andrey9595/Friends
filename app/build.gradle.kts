@@ -43,4 +43,6 @@ dependencies {
     implementation(Dependencies.FRAGMENT_KTX)
     implementation(Dependencies.CONSTRAINT_LAYOUT)
     implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.VK_SDK)
+    implementation(Dependencies.VK_SDK_API)
 }
